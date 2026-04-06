@@ -1,0 +1,41 @@
+/* ================================================= */
+/* 📱 FORCE MOBILE STACK – NUCLEAR FIX */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* 🔴 PROJELERİ SARAN TÜM OLASI PARENTLER */
+  section,
+  .projects,
+  .projects-wrapper,
+  .projects-container,
+  .projects-grid,
+  .portfolio,
+  .portfolio-section {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+  }
+
+  /* 🔴 HER TILTED CARD ZORLA ALT ALTA */
+  .tilted-card-figure {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 32px 0 !important;
+    float: none !important;
+  }
+
+  /* 🔴 INNER & IMAGE */
+  .tilted-card-inner,
+  .tilted-card-img {
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  /* 🔴 SCALE / ROTATE / HOVER TAMAMEN KAPAT */
+  * {
+    transform: none !important;
+  }
+}

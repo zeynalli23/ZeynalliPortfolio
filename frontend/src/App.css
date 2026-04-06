@@ -1,0 +1,1047 @@
+/* App.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;/*  */
+
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  overflow-y: auto !important; /* Artık aşağı kaydırmaya izin veriyoruz -- SONRADAN EKLENDİ*/
+  overflow-x: hidden;
+}
+
+
+
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #000;
+    /* Videonun alt kısmını siyahla harmanlar (Geçiş yumuşatıcı) */
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+
+  min-height: 100vh;/* yeni ekledim */
+  height: auto;
+  overflow: visible;
+
+}
+
+.main-wrapper {
+  background: #000; /* Tüm sayfanın zeminini siyah yapar */
+  scroll-behavior: smooth; /* Kaydırmayı yumuşatır */
+}
+
+
+/* 🚀 Video Arka Plan */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  filter: brightness(0.5) contrast(1.1); /* Yazıların okunması için ideal karartma */
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo, .product-link {
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.product-link:hover { opacity: 0.6; }
+
+/* Pipe Overlay */
+.pipe-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  z-index: 5;
+  pointer-events: none;
+  backdrop-filter: blur(3px);
+}
+
+/* 🚀 ANA İÇERİK KAPSAYICISI (Flexbox Yapısı) */
+.content-wrapper {
+  position: absolute;
+/*   top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%); */
+  display: flex;
+  justify-content: space-between; /* Birini sola, birini sağa yaslar */
+  /* align-items: center; */
+ /*  padding: 0 8%; */ /* Kenarlardan güvenli pay */
+  z-index: 10;
+  pointer-events: none;
+    /* Üst bölümden gelen yumuşak geçişi karşılar */
+  margin-top: -1px; /* yeni */
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+
+  
+  align-items: flex-start;
+
+  padding: 160px 8% 120px;
+
+}
+
+/* 🛠 SOL İÇERİK */
+.left-content {
+  /* max-width: 45%; */
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+
+    flex: 1; /* Bu iki satır ekran daraldığında nesnelerinde daralmaması için */
+  max-width: 600px;
+}
+
+.main-title {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 100;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.info-text {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 450px;
+}
+
+/* 🚀 SAĞ PANEL (Hakkımda - %20 Genişletilmiş) */
+.right-about-panel {
+  margin-top:5%;/* Yukarıdan boşluk */
+ /*  width: 430px;    */          /* 360px'den 430px'e çıkarıldı (%20 genişleme) */
+  pointer-events: all;
+  display: flex;
+  justify-content: flex-end;
+
+    flex: 0 0 auto;/* Bu iki satır ekran daraldığında nesnelerinde daralmaması için */
+  width: min(430px, 100%);
+}
+
+.about-content {
+  background: rgba(0, 0, 0, 0.25); /* %25 Siyah opaklık */
+  backdrop-filter: blur(15px);
+  padding: 35px;
+  border-radius: 40px;      /* Oval tasarım */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;              /* 430px alanın tamamını kaplar */
+}
+
+.about-content h3 {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 25px;
+  color: #eee;
+}
+
+/* 🌟 DİLLER VE YILDIZLAR */
+.languages-section {
+  margin-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.language-item:hover { transform: translateX(5px); }
+
+.language-name {
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.stars-container {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.15); /* Pasif yıldız */
+  transition: all 0.3s ease;
+}
+
+.star.active {
+  color: #fff; /* Aktif yıldız */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Yıldız Hover Efekti */
+.language-item:hover .star.active {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* 💻 YETENEKLER */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.skill-tag {
+  font-size: 0.75rem;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* --- BUTON --- */
+.buy-btn {
+ /*  padding: 16px 55px; */
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+ /*  font-size: 1.1rem; */
+  font-weight: 300;
+  letter-spacing: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+
+    max-width: 100%;/* ????? BÜYÜK EKRANLARDA DARALMAMASI ÜST ÜSTE BİNMEMESİ İÇİN ???? */
+  padding: clamp(12px, 2vw, 16px) clamp(30px, 5vw, 55px);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  white-space: nowrap;
+}
+
+.buy-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* --- PRODUCT OVERLAY --- */
+/* .product-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.product-overlay {
+  position: fixed; /* absolute yerine fixed kullanarak ekranı tam kaplamasını garantiye alın */
+  inset: 0;
+  background: #000;
+  z-index: 2000; /* Diğer her şeyin üstünde olması için */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-trigger {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  cursor: pointer;
+  font-weight: 200;
+  z-index: 2100;
+  transition: opacity 0.3s ease;
+}
+
+.close-trigger:hover {
+  opacity: 0.6;
+}
+
+/* Product overlay ortasında "Çok yakında eklenecek" metni */
+.product-overlay-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 100%;
+  align-items: center;
+}
+
+.project-card-wrapper {
+  width: 100%;
+  max-width: 900px; /* Standart genişlik */
+  position: relative;
+}
+
+.project-overlay-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px); /* Blur artırıldı */
+  padding: 50px;
+  border-radius: 15px;
+  width: 100%; /* Tam kaplama */
+  height: 100%; /* Tam kaplama */
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.project-card-wrapper:hover .project-overlay-inner {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.project-title-overlay {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.project-desc-overlay {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.view-project-btn {
+  padding: 10px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.view-project-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.product-overlay-text {
+  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  font-weight: 200;
+  letter-spacing: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+}
+
+/* 📱 Responsive */
+@media (max-width: 1024px) {
+  .header { padding: 30px 40px; }
+  .content-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    padding: 0 5%;
+  }
+  .left-content, .right-about-panel {
+    max-width: 100%;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* --- MÜŞTERİ TEKLİF BÖLÜMÜ (CONTACT SECTION) --- */
+.contact-section {
+  position: relative;
+  height: 100vh; /* Tam ekran yükseklik */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000; /* Arka plan tonu aynı kalsın */
+  text-align: center;
+  padding: 0 20px;
+  background: url('/src/assets/background.png') no-repeat center center/cover; /* Resim yolu ve özellikleri */
+  /* Renk geçişi ile resim üzerine hafif bir katman ekleyebiliriz */
+  background-color: rgba(0, 0, 0, 0.6); /* Hafif karartma */
+  background-blend-mode: multiply; /* Resimle karartma rengini birleştir */
+
+  /* Üst bölümden gelen maskeleme ile uyum sağlar */
+ /*  border-top: 1px solid rgba(255, 255, 255, 0.05); */
+}
+
+
+.contact-title {
+ margin-left: 10px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 200;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.contact-sub {
+   margin-left: 75px;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin-bottom: 50px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* 🌈 PASTEL RGB BUTON - Senin istediğin o özel efekt */
+.rgb-button {
+  margin-right: 20px;
+  position: relative;
+  padding: 20px 60px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: white;
+  background: #000;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1;
+  letter-spacing: 3px;
+  transition: all 0.4s ease;
+}
+
+/* Butonun arkasındaki pastel RGB parlama efekti */
+.rgb-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ffb7b2, #ffdac1, #e2f0cb, #b5ead7, #c7ceea);
+  background-size: 400%;
+  z-index: -1;
+  border-radius: 50px;
+  filter: blur(10px); /* Parlama hissi */
+  opacity: 0.7;
+  animation: pastelRGB 8s linear infinite;
+}
+
+/* Butonun asıl çerçevesi */
+.rgb-button::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: #000; /* İçini tekrar siyah yapar */
+  border-radius: 50px;
+  z-index: -1;
+  transition: 0.3s;
+}
+
+.rgb-button:hover::after {
+  background: transparent; /* Hover yapınca siyahlık gider, pastel dolgu görünür */
+}
+
+.rgb-button:hover {
+  color: #000; /* Yazı siyah olur ki pastel renkte okunsun */
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(226, 240, 203, 0.4);
+}
+
+/* Pastel RGB Animasyonu */
+@keyframes pastelRGB {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* --- İLETİŞİM (BÜYÜTÜLMÜŞ BAKLAVA GRID) --- */
+
+.footer-contact-section {
+   position: relative; /* İçindeki 'absolute' elemanlar için referans */
+  overflow: hidden;   /* Hareketli elementlerin dışarı taşmasını engeller */
+  padding: 150px 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.diamond-grid {
+  display: grid;
+  /* Kutuların yerleşimi için 3 sütunlu yapı */
+  grid-template-columns: repeat(3, 180px); 
+  gap: 60px; /* Kutular arası boşluğu artırdık */
+  transform: rotate(45deg); /* Baklava formu için döndür */
+  margin-bottom: 100px;
+}
+
+.diamond-item {
+  width: 220px;  /* Boyut %50'ye yakın büyütüldü */
+  height: 220px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.diamond-content {
+  transform: rotate(-45deg); /* Yazı ve ikonu düzeltmek için ters döndür */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  gap: 15px; /* İkon ve yazı arası mesafe */
+  text-align: center;
+}
+
+.diamond-content i, .diamond-content svg {
+  font-size: 2.5rem; /* İkonlar büyütüldü */
+  color: #fff;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.diamond-content span {
+  font-size: 0.9rem; /* Yazılar büyütüldü */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 300;
+  opacity: 1; /* Yazılar artık her zaman görünür */
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hover Efektleri */
+.diamond-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.08) rotate(45deg); /* Büyüme efekti */
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+  z-index: 10;
+}
+
+.diamond-item:hover .diamond-content i {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+.diamond-item:hover .diamond-content span {
+  color: #fff;
+  opacity: 1;
+}
+
+/* Featured (RGB Sınır) Efekti */
+.diamond-item.featured {
+  border: 1px solid transparent;
+  background-image: linear-gradient(#000, #000), 
+                    linear-gradient(45deg, #ffb7b2, #c7ceea);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+/* Responsive: Mobilde 2'li yapıya döner */
+@media (max-width: 900px) {
+  .diamond-grid {
+    grid-template-columns: repeat(2, 150px);
+    gap: 80px;
+  }
+  
+}
+/* --- SAĞ PANEL FORM TASARIMI --- */
+
+.mail-form-wrapper {        
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 15px;
+  border-radius: 12px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Formun Butonu - Pastel RGB Dokunuşlu */
+.form-submit-btn {
+  position: relative;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.form-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+  /* Hover'da butona hafif pastel bir parlama ekler */
+  background: linear-gradient(45deg, #ffdac1, #b5ead7); 
+}
+
+/* --- BOŞLUĞU DOLDURAN ARKA PLAN PARLAMALARI --- */
+/* Sağ panelin arkasına hafif bir renk hüzmesi ekleyerek alanı doldurur */
+.about-content::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(199, 206, 234, 0.1) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 1. ve 2. Bölüm Arası Yumuşak Geçiş */
+.hero {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Renkli Akış / Duman Efekti (SVG Divider) */
+.wave-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(140% + 1.3px);
+  height: 90px;
+}
+
+.wave-divider .shape-fill {
+  fill: #000; /* Bir önceki bölümün rengiyle başlar */
+  filter: drop-shadow(0px -5px 15px rgba(181, 234, 215, 0.3)); /* Pastel bir ışıma */
+}
+
+/* ----------------------------------------------------- */
+/* --- YENİLENMİŞ FOOTER DÜZENİ --- */
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1400px;
+  gap: 50px;
+  padding: 0 5%;
+  z-index: 10;
+}
+
+.contact-form-wrapper {
+  flex: 1;
+  max-width: 500px;
+  pointer-events: all;
+}
+
+.form-inner {
+  margin-left: 40px;
+  margin-bottom: 90px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-inner h3 {
+  letter-spacing: 4px;
+  font-weight: 200;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.form-inner p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.modern-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group input, 
+.form-group textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 15px;
+  color: #fff;
+  font-family: inherit;
+  transition: 0.3s;
+  outline: none;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  border-color: rgba(181, 234, 215, 0.5); /* Pastel odaklanma rengi */
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Mevcut RGB Butonun Form İçin Küçük Versiyonu */
+.rgb-button.small {
+  padding: 15px 30px;
+  font-size: 1rem;
+  margin-right: 0; /* Sayfadaki kaymayı önler */
+  width: 100%;
+}
+
+.copyright-text {
+  opacity: 0.3; 
+  font-size: 0.7rem; 
+  letter-spacing: 4px; 
+  margin-top: 80px;
+  text-align: center;
+}
+
+/* Responsive Düzenleme */
+@media (max-width: 1100px) {
+  .footer-container {
+    flex-direction: column;
+    padding-top: 50px;
+  }
+  
+  .diamond-grid {
+    transform: rotate(45deg) scale(0.8); /* Mobilde elmasları biraz küçültür */
+    margin-bottom: 150px; /* Alttaki formla çakışmaması için */
+  }
+
+  .contact-form-wrapper {
+    width: 100%;
+    margin-top: 50px;
+  }
+}
+
+/* Textarea Boyutlandırmasını Kapat */
+textarea {
+  resize: none !important; /* Kullanıcının sağ alttan tutup çekmesini engeller */
+}
+
+/* Yeni Sosyal Panel Düzeni */
+.social-grid-modern {
+  margin-bottom: 85px;
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.social-title {
+  
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.social-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 sütunlu şık dizilim */
+  gap: 20px;
+}
+
+.social-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  --card-color: #fff;
+}
+
+/* Hover'da uygulama renginde LED / parlama efekti */
+.social-card-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.social-card:hover .social-card-glow {
+  opacity: 0.5;
+}
+
+.social-card i {
+  font-size: 1.8rem;
+  color: #fff;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.social-card span {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+.social-card:hover {
+  border-color: var(--card-color);
+  box-shadow: 0 0 25px var(--card-color), 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+.social-card:hover i {
+  color: var(--card-color);
+  text-shadow: 0 0 15px var(--card-color);
+}
+
+/* Responsive Mobilde Tek Sütun */
+@media (max-width: 600px) {
+  .social-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- 3. BÖLÜM: MODERN İLETİŞİM PANELİ --- */
+
+
+
+.footer-contact-section {
+  position: relative;
+  /* min-height: 100vh; yerine bunu kullanıyoruz: */
+  padding: 80px 8% 40px 8%; /* Alt padding'i (40px) iyice azalttık */
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* İçeriği yukarı yasla */
+  align-items: center;
+
+
+}
+
+/* Telif yazısının altındaki boşluğu sıfırlayalım */
+.copyright-text {
+  margin-top: 40px; /* Üstten mesafe kalsın */
+  margin-bottom: 0px; /* Alttan boşluğu tamamen kapattık */
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  opacity: 0.3;
+  text-align: center;
+  padding-bottom: 20px; /* Sayfa bitişi için çok küçük bir pay */
+}
+
+
+/* ------------------------ */
+/* --- PRODUCT GRID INTEGRATION --- */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* HERO ARTIK TEK EKRAN OLMASIN */
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* CONTENT AKIŞA GİRSİN */
+  .content-wrapper {
+    position: relative;
+    top: auto;
+    transform: none;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 50px;/* 40px di */
+    padding: 120px 20px 60px;
+  }
+
+  /* SOL METİN */
+  .left-content {
+    max-width: 100%;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-text {
+    max-width: 100%;
+  }
+
+  /* SAĞ PANEL (EN KRİTİK KISIM) */
+  .right-about-panel {
+    width: 100%;
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  .about-content {
+    width: 100%;
+    border-radius: 28px;
+    padding: 25px;
+  }
+
+  /* HEADER SIKIŞMASIN */
+  .header {
+    padding: 20px;
+  }
+
+  /* CONTACT BÖLÜMÜ */
+  .contact-section {
+    height: auto;
+    padding: 120px 20px;
+  }
+
+  .contact-title,
+  .contact-sub {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  /* FOOTER ALT ALTA */
+  .footer-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* DIAMOND GRID – MOBİLDE SADELEŞTİR */
+  .diamond-grid {
+    grid-template-columns: 1fr;
+    transform: none;
+    gap: 40px;
+  }
+
+  .diamond-item {
+    width: 100%;
+    height: 180px;
+  }
+
+  .diamond-content {
+    transform: none;
+  }
+
+  /* SOCIAL CARDS */
+  .social-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+section,/* daralmaması için */
+.hero,
+.contact-section,
+.footer-contact-section {
+  position: relative;
+  z-index: auto;
+}

@@ -1,0 +1,110 @@
+/* Loading ekranı: blurlu arka plan + Z L animasyonu */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 1.2s ease-out;
+}
+
+.loading-screen.loading-exit {
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Arka plan: sadece blur, beyaz dolgu yok – arkadaki sayfa bulanık görünür */
+.loading-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: opacity 1.2s ease-out;
+}
+
+.loading-screen.loading-exit .loading-backdrop {
+  opacity: 0;
+}
+
+.loading-letters {
+  transition: opacity 1.2s ease-out;
+}
+
+.loading-screen.loading-exit .loading-letters {
+  opacity: 0;
+}
+
+/* Z ve L harfleri konteyneri */
+.loading-letters {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05em;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.loading-z,
+.loading-l {
+  display: inline-block;
+  font-size: clamp(4rem, 15vw, 8rem);
+  color: #111;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  animation: loadingLetterPulse 1.4s ease-in-out infinite both;
+}
+
+.loading-l {
+  animation-delay: 0.2s;
+}
+
+@keyframes loadingLetterPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ek: harflerin hafif “nefes alan” glow’u */
+.loading-z {
+  animation-name: loadingLetterPulseZ;
+}
+
+.loading-l {
+  animation-name: loadingLetterPulseL;
+}
+
+@keyframes loadingLetterPulseZ {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.94) translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) translateX(2px);
+  }
+}
+
+@keyframes loadingLetterPulseL {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.94) translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) translateX(-2px);
+  }
+}
