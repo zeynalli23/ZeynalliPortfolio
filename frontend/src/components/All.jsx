@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from "axios";
 import TiltedCard from './TiltedCard';
+import project1 from '../assets/project1.jpg';
+import project3 from '../assets/project3.jpg';
+import silkVideo from '../assets/silk.webm';
 
 const All = () => {
   const [showProducts, setShowProducts] = useState(false);
@@ -62,16 +65,16 @@ const All = () => {
 
   const productItems = [
     {
-      title: "Dr. Könül Mikayılova",
-      description: "Akademik Portfolyo Web Saytı",
-      image: "/src/assets/project3.jpg",
-      link: "https://konulmikayilova.com"
-    },
-    {
       title: "Semalı Fire Alarm",
       description: "Yanğın Təhlükəsizlik Sistemləri",
-      image: "/src/assets/project1.jpg",
+      image: project1,
       link: "https://semali-fire-alarm.vercel.app/"
+    },
+    {
+      title: "Dr. Könül Mikayılova",
+      description: "Akademik Portfolyo Web Saytı",
+      image: project3,
+      link: "https://konulmikayilova.com"
     }
   ];
 
@@ -98,7 +101,7 @@ const All = () => {
     <div className="main-wrapper">
       <div className="hero">
         <video autoPlay muted loop playsInline className="hero-video-bg">
-          <source src="/src/assets/silk.webm" type="video/webm" />
+          <source src={silkVideo} type="video/webm" />
         </video>
 
         <div className="pipe-overlay"></div>
@@ -175,8 +178,8 @@ const All = () => {
               <div className="product-overlay-content">
                 <div className="projects-grid">
                   {productItems.map((project, idx) => (
-                    <motion.div 
-                      key={idx} 
+                    <motion.div
+                      key={idx}
                       className="project-card-wrapper"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
